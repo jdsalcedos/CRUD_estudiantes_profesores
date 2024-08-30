@@ -13,18 +13,8 @@ import java.io.Serializable;
 public class PersonaDto implements Serializable{
     public String cedula;
     public String nombre;
+        
 
-    public PersonaDto() {
-    }
-
-    public PersonaDto(String cedula, String nombre) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-    }
-
-    /**
-     * @return the cedula
-     */
     public String getCedula() {
         return cedula;
     }

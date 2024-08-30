@@ -107,7 +107,12 @@ public class Launcher {
         System.out.print("Matricula: ");
         int matricula = scanner.nextInt();
 
-        EstudianteDto estudianteDto = new EstudianteDto(codigoE, creditos, matricula, cedula, nombre);
+        EstudianteDto estudianteDto = new EstudianteDto();
+        estudianteDto.setCedula(cedula);
+        estudianteDto.setCreditos(creditos);
+        estudianteDto.setMatricula(matricula);
+        estudianteDto.setCodigoE(codigoE);
+        estudianteDto.setNombre(nombre);
         gestor.guardar_Estudiante(estudianteDto);
         System.out.println("Estudiante agregado con éxito.");
     }
@@ -125,7 +130,12 @@ public class Launcher {
         System.out.print("Nuevo numero de matricula: ");
         int matricula = scanner.nextInt();
 
-        EstudianteDto estudianteDto = new EstudianteDto(codigoE, creditos, matricula, cedula, nombre);
+        EstudianteDto estudianteDto = new EstudianteDto();
+        estudianteDto.setCedula(cedula);
+        estudianteDto.setCreditos(creditos);
+        estudianteDto.setMatricula(matricula);
+        estudianteDto.setCodigoE(codigoE);
+        estudianteDto.setNombre(nombre);
         gestor.update_Estudiante(estudianteDto);
         System.out.println("Estudiante actualizado con éxito.");
     }
@@ -157,7 +167,12 @@ public class Launcher {
         System.out.print("Numero de materias dictadas: ");
         int materias_dictadas= scanner.nextInt();
 
-        ProfesorDto profesorDto = new ProfesorDto(codigoP, categoria, materias_dictadas, cedula, nombre);
+        ProfesorDto profesorDto = new ProfesorDto();
+        profesorDto.setCodigoP(codigoP);
+        profesorDto.setCategoria(categoria);
+        profesorDto.setMaterias_dictadas(materias_dictadas);
+        profesorDto.setCedula(cedula);
+        profesorDto.setNombre(nombre);
         gestor.guardar_Profesor(profesorDto);
         System.out.println("Profesor agregado con éxito.");
     }
@@ -175,7 +190,12 @@ public class Launcher {
         System.out.print("Nueva cantidad de materias dictadas: ");
         int materias_dictadas = scanner.nextInt();
 
-        ProfesorDto profesorDto = new ProfesorDto(codigoP, categoria, materias_dictadas, cedula, nombre);
+        ProfesorDto profesorDto = new ProfesorDto();
+        profesorDto.setCodigoP(codigoP);
+        profesorDto.setCategoria(categoria);
+        profesorDto.setMaterias_dictadas(materias_dictadas);
+        profesorDto.setCedula(cedula);
+        profesorDto.setNombre(nombre);
         gestor.update_Profesor(profesorDto);
         System.out.println("Profesor actualizado con éxito.");
     }

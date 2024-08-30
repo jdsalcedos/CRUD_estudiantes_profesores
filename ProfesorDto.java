@@ -14,22 +14,6 @@ public class ProfesorDto extends PersonaDto{
     private String categoria;
     private int materias_dictadas;
 
-    public ProfesorDto() {
-    }
-
-    public ProfesorDto(String codigoP, String categoria, int materias_dictadas) {
-        this.codigoP = codigoP;
-        this.categoria = categoria;
-        this.materias_dictadas = materias_dictadas;
-    }
-
-    public ProfesorDto(String codigoP, String categoria, int materias_dictadas, String cedula, String nombre) {
-        super(cedula, nombre);
-        this.codigoP = codigoP;
-        this.categoria = categoria;
-        this.materias_dictadas = materias_dictadas;
-    }
-
     @Override
     public String toString(){
         return "ProfesorDto{" +

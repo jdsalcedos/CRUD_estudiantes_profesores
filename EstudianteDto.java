@@ -13,21 +13,6 @@ public class EstudianteDto extends PersonaDto{
     private String codigoE;
     private int creditos;
     private int matricula;
-
-    public EstudianteDto() {
-        super(null, null);
-    }
-
-    public EstudianteDto(String codigoE, int creditos, int matricula) {
-        this(codigoE, creditos, matricula, null, null);
-    }
-
-    public EstudianteDto(String codigoE, int creditos, int matricula, String cedula, String nombre) {
-        super(cedula, nombre);
-        this.codigoE = codigoE;
-        this.creditos = creditos;
-        this.matricula = matricula;
-    }
     
     @Override
     public String toString(){
