@@ -2,18 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dto;
+package Dto;
 
 
 /**
  *
  * @author juand
  */
+//El DTO se encarga de la transferencia de los datos desde el gestor de la persistencia a otras del programa
 public class EstudianteDto extends PersonaDto{
     private String codigoE;
     private int creditos;
     private int matricula;
     
+    //método que extrae toda la información del gestor de la base de datos y la imprime bajo ciertos parámetros
     @Override
     public String toString(){
         return "EstudianteDto{" +
@@ -24,6 +26,8 @@ public class EstudianteDto extends PersonaDto{
                 ", numero de matricula=" + matricula +
                 '}';
     }
+
+    //Setters y getters
     /**
      * @return the codigoE
      */

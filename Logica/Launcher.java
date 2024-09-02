@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package logica;
+package Logica;
 
-import dao.EstudianteDAO;
-import dao.ProfesorDAO;
-import dto.EstudianteDto;
-import dto.ProfesorDto;
+import DAO.EstudianteDAO;
+import DAO.ProfesorDAO;
+import Dto.EstudianteDto;
+import Dto.ProfesorDto;
 import java.util.List;
 import java.util.Scanner;
 /**
