@@ -3,17 +3,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-
 import java.awt.Font;
-import java.awt.Window;
 import java.awt.Color;
-import java.awt.Choice;
 import javax.swing.JComboBox;
 
 public class Menu extends JFrame{
@@ -76,7 +70,7 @@ public class Menu extends JFrame{
 		cboxSeleccionarOpcion.addItem("Actualizar estudiante");
 		cboxSeleccionarOpcion.addItem("Agregar estudiante");
 		cboxSeleccionarOpcion.addItem("Eliminar estudiante");
-		cboxSeleccionarOpcion.addItem("Listar profesor");
+		cboxSeleccionarOpcion.addItem("Listar profesores");
 		cboxSeleccionarOpcion.addItem("Actualizar profesor");
 		cboxSeleccionarOpcion.addItem("Agregar profesor");
 		cboxSeleccionarOpcion.addItem("Eliminar profesor");
@@ -99,7 +93,7 @@ public class Menu extends JFrame{
 				case "Eliminar estudiante":
 					ventanaEliminarEstudiante();;
 					break;
-				case "Listar profesor":
+				case "Listar profesores":
 					ventanaListarProfesor();;
 					break;
 				case "Actualizar profesor":

@@ -1,18 +1,21 @@
 package Vista;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import dao.EstudianteDAO;
+import dao.ProfesorDAO;
+import logica.Gestor;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class EliminarProfesor extends JFrame{
-
+	private Gestor gestor;
 	private JFrame frame;
 	private JTextField txtCedulaEliminar;
 
@@ -24,6 +27,9 @@ public class EliminarProfesor extends JFrame{
 	 * Create the application.
 	 */
 	public EliminarProfesor() {
+		EstudianteDAO estudianteDao = new EstudianteDAO(); 
+        ProfesorDAO profesorDao = new ProfesorDAO();
+        gestor = new Gestor(estudianteDao, profesorDao);
 		getContentPane().setLayout(null);
 		
 		JButton btnAtras = new JButton("Volver");
@@ -57,6 +63,11 @@ public class EliminarProfesor extends JFrame{
 		getContentPane().add(txtCedulaEliminar);
 		
 		JLabel lblEliminarProfesor = new JLabel("Eliminar profesor");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eliminarProfesor();
+			}
+		});
 		lblEliminarProfesor.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		lblEliminarProfesor.setBounds(225, 10, 250, 38);
 		getContentPane().add(lblEliminarProfesor);
@@ -72,4 +83,8 @@ public class EliminarProfesor extends JFrame{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	private void eliminarProfesor() {
+		gestor.borrar_Profesor(txtCedulaEliminar.getText());
+		JOptionPane.showMessageDialog(this, "Profesor eliminado con éxito");
+	}
 }

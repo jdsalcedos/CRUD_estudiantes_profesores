@@ -1,18 +1,23 @@
 package Vista;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import dao.EstudianteDAO;
+import dao.ProfesorDAO;
+import dto.ProfesorDto;
+import logica.Gestor;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ActualizarProfesor extends JFrame{
-
+	private Gestor gestor;
 	private JFrame frame;
 	private JTextField txtMaterias;
 	private JTextField txtCategoria;
@@ -28,6 +33,9 @@ public class ActualizarProfesor extends JFrame{
 	 * Create the application.
 	 */
 	public ActualizarProfesor() {
+		EstudianteDAO estudianteDao = new EstudianteDAO(); 
+        ProfesorDAO profesorDao = new ProfesorDAO();
+        gestor = new Gestor(estudianteDao, profesorDao);
 		getContentPane().setLayout(null);
 		
 		JLabel lblActualizarProfesor = new JLabel("Actualizar profesor");
@@ -63,6 +71,7 @@ public class ActualizarProfesor extends JFrame{
 		JButton btnActualizar = new JButton("Actualizar");
 		btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actualizarProfesor();
 			}
 		});
 		btnActualizar.setFont(new Font("Tahoma", Font.PLAIN, 27));
@@ -114,6 +123,18 @@ public class ActualizarProfesor extends JFrame{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	private void actualizarProfesor() {
+	 	ProfesorDto profesorDto = new ProfesorDto();
+        profesorDto.setCodigoP(txtCodigo.getText());
+        profesorDto.setCategoria(txtCategoria.getText());
+        profesorDto.setMaterias_dictadas(Integer.parseInt(txtMaterias.getText()));
+        profesorDto.setCedula(txtCedula.getText());
+        profesorDto.setNombre(txtNombre.getText());
+        
+        gestor.update_Profesor(profesorDto);
+        JOptionPane.showMessageDialog(this, "Profesor actualizado con éxito");
 	}
 
 }

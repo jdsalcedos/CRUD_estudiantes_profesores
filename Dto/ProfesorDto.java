@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Dto;
+package dto;
 
 
 /**
@@ -17,13 +17,12 @@ public class ProfesorDto extends PersonaDto{
     //método que extrae toda la información del gestor de la base de datos y la imprime bajo ciertos parámetros
     @Override
     public String toString(){
-        return "ProfesorDto{" +
-                "nombre='" + nombre + '\'' +
+        return "nombre=" + nombre +
                 ", cedula='" + cedula + '\'' +
-                ", codigo=" + codigoP +
+                ", codigo='" + codigoP+ '\'' +
                 ", categoria=" + categoria +
-                ", numero de materias dictadas=" + materias_dictadas +
-                '}';
+                ", numero de materias dictadas='" + materias_dictadas + '\'';
+        
     }
     
     //métiodos setters y getters

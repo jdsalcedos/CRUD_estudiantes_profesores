@@ -1,17 +1,23 @@
 package Vista;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import dao.EstudianteDAO;
+import dao.ProfesorDAO;
+import dto.EstudianteDto;
+import logica.Gestor;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ActualizarEstudiante extends JFrame{
-
+	private Gestor gestor;
 	private JFrame frame;
 	private JTextField txtNuevaMatricula;
 	private JTextField txtNuevoCreditos;
@@ -27,6 +33,9 @@ public class ActualizarEstudiante extends JFrame{
 	 * Create the application.
 	 */
 	public ActualizarEstudiante() {
+		EstudianteDAO estudianteDao = new EstudianteDAO(); 
+        ProfesorDAO profesorDao = new ProfesorDAO();
+        gestor = new Gestor(estudianteDao, profesorDao);
 		getContentPane().setLayout(null);
 		
 		txtNuevaMatricula = new JTextField();
@@ -82,6 +91,7 @@ public class ActualizarEstudiante extends JFrame{
 		JButton btnActualizar = new JButton("Actualizar");
 		btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actualizarEstudiante();
 			}
 		});
 		btnActualizar.setFont(new Font("Tahoma", Font.PLAIN, 27));
@@ -115,4 +125,15 @@ public class ActualizarEstudiante extends JFrame{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	private void actualizarEstudiante() {
+		EstudianteDto estudianteDto = new EstudianteDto();
+		estudianteDto.setCedula(txtCedula.getText());
+        estudianteDto.setCreditos(Integer.parseInt(txtNuevoCreditos.getText()));
+        estudianteDto.setMatricula(Integer.parseInt(txtNuevaMatricula.getText()));
+        estudianteDto.setCodigoE(txtNuevoCodigo.getText());
+        estudianteDto.setNombre(txtNuevoNombre.getText());
+        
+        gestor.update_Estudiante(estudianteDto);
+        JOptionPane.showMessageDialog(this, "Estudiante actualizado con éxito");
+	}
 }

@@ -4,11 +4,11 @@
  */
 package mapper;
 
-import Dto.EstudianteDto;
-import Dto.ProfesorDto;
-import Modelo.Estudiante;
-import Modelo.Persona;
-import Modelo.Profesor;
+import dto.EstudianteDto;
+import dto.ProfesorDto;
+import modelo.Estudiante;
+import modelo.Persona;
+import modelo.Profesor;
 
 /**
  *

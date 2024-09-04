@@ -2,12 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO;
+package dao;
 
 import java.util.List;
+
+import modelo.Persona;
+import modelo.Profesor;
+
 import java.util.ArrayList;
-import Modelo.Persona;
-import Modelo.Profesor;
 /**
  *
  * @author juand

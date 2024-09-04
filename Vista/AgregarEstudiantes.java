@@ -1,17 +1,23 @@
 package Vista;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import dao.EstudianteDAO;
+import dao.ProfesorDAO;
+import dto.EstudianteDto;
+import logica.Gestor;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class AgregarEstudiantes extends JFrame{
-
+	private Gestor gestor;
 	private JFrame frame;
 	private JTextField txtNombre;
 	private JTextField txtCedula;
@@ -27,6 +33,10 @@ public class AgregarEstudiantes extends JFrame{
 	 * Create the application.
 	 */
 	public AgregarEstudiantes() {
+		EstudianteDAO estudianteDao = new EstudianteDAO(); 
+        ProfesorDAO profesorDao = new ProfesorDAO();
+        gestor = new Gestor(estudianteDao, profesorDao);
+		
 		getContentPane().setLayout(null);
 		
 		JLabel lblAgregarEstudiante = new JLabel("Agregar estudiante");
@@ -98,11 +108,14 @@ public class AgregarEstudiantes extends JFrame{
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				agregarEstudiante();
 			}
 		});
 		btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		btnAgregar.setBounds(21, 355, 162, 38);
 		getContentPane().add(btnAgregar);
+		
+		
 		initialize();
 	}
 
@@ -113,6 +126,18 @@ public class AgregarEstudiantes extends JFrame{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	private void agregarEstudiante() {
+		EstudianteDto estudianteDto = new EstudianteDto();
+		estudianteDto.setCedula(txtCedula.getText());
+		estudianteDto.setCreditos(Integer.parseInt(txtCreditos.getText()));
+		estudianteDto.setMatricula(Integer.parseInt(txtMatricula.getText()));
+		estudianteDto.setCodigoE(txtCodigo.getText());
+		estudianteDto.setNombre(txtNombre.getText());
+		
+		gestor.guardar_Estudiante(estudianteDto);
+		JOptionPane.showMessageDialog(this, "Estudiante agregado con éxito");
 	}
 
 }

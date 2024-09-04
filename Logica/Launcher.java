@@ -2,14 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Logica;
+package logica;
 
-import DAO.EstudianteDAO;
-import DAO.ProfesorDAO;
-import Dto.EstudianteDto;
-import Dto.ProfesorDto;
+import dto.EstudianteDto;
+import dto.ProfesorDto;
+
 import java.util.List;
 import java.util.Scanner;
+
+import dao.EstudianteDAO;
+import dao.ProfesorDAO;
 /**
  *
  * @author juand
@@ -20,7 +22,7 @@ public class Launcher {
 
     
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         EstudianteDAO estudianteDao = new EstudianteDAO(); 
         ProfesorDAO profesorDao = new ProfesorDAO();
         gestor = new Gestor(estudianteDao, profesorDao);
@@ -31,7 +33,7 @@ public class Launcher {
             procesarOpcion(opcion);
         }
     }
-
+	
     private static void mostrarMenu() {
         System.out.println("=== Menú Principal ===");
         System.out.println("1. Listar Estudiantes");
@@ -86,36 +88,8 @@ public class Launcher {
                 break;
         }
     }
-
-    private static void listarEstudiantes() {
-        List<EstudianteDto> estudiantes = gestor.buscar_todos_estudiantes();
-        for (EstudianteDto estudiante : estudiantes) {
-            System.out.println(estudiante);
-        }
-    }
-
-    private static void agregarEstudiante() {
-        System.out.print("Codigo: ");
-        String codigoE = scanner.nextLine();
-        scanner.nextLine(); // Limpiar buffer de entrada
-        System.out.print("Nombre: ");
-        String nombre = scanner.nextLine();
-        System.out.print("Cedula: ");
-        String cedula = scanner.nextLine();
-        System.out.print("Numero de creditos: ");
-        int creditos = scanner.nextInt();
-        System.out.print("Matricula: ");
-        int matricula = scanner.nextInt();
-
-        EstudianteDto estudianteDto = new EstudianteDto();
-        estudianteDto.setCedula(cedula);
-        estudianteDto.setCreditos(creditos);
-        estudianteDto.setMatricula(matricula);
-        estudianteDto.setCodigoE(codigoE);
-        estudianteDto.setNombre(nombre);
-        gestor.guardar_Estudiante(estudianteDto);
-        System.out.println("Estudiante agregado con éxito.");
-    }
+		*/
+    
 
     private static void actualizarEstudiante() {
         System.out.print("Cedula del Estudiante a actualizar: ");
@@ -140,42 +114,11 @@ public class Launcher {
         System.out.println("Estudiante actualizado con éxito.");
     }
 
-    private static void eliminarEstudiante() {
-        System.out.print("Cedula del Estudiante a eliminar: ");
-        String cedula = scanner.nextLine();
-        gestor.borrar_Estudiante(cedula);
-        System.out.println("Estudiante eliminado con éxito.");
-    }
+   
 
-    private static void listarProfesores() {
-        List<ProfesorDto> profesores = gestor.buscar_todos_profesores();
-        for (ProfesorDto profesor : profesores) {
-            System.out.println(profesor);
-        }
-    }
+    
 
-    private static void agregarProfesor() {
-        System.out.print("Codigo: ");
-        String codigoP = scanner.nextLine();
-        scanner.nextLine(); // Limpiar buffer de entrada
-        System.out.print("Nombre: ");
-        String nombre = scanner.nextLine();
-        System.out.print("Cedula: ");
-        String cedula = scanner.nextLine();
-        System.out.print("Categoria: ");
-        String categoria = scanner.nextLine();
-        System.out.print("Numero de materias dictadas: ");
-        int materias_dictadas= scanner.nextInt();
-
-        ProfesorDto profesorDto = new ProfesorDto();
-        profesorDto.setCodigoP(codigoP);
-        profesorDto.setCategoria(categoria);
-        profesorDto.setMaterias_dictadas(materias_dictadas);
-        profesorDto.setCedula(cedula);
-        profesorDto.setNombre(nombre);
-        gestor.guardar_Profesor(profesorDto);
-        System.out.println("Profesor agregado con éxito.");
-    }
+   
 
     private static void actualizarProfesor() {
         System.out.print("Cedula del Profesor a actualizar: ");
@@ -200,11 +143,6 @@ public class Launcher {
         System.out.println("Profesor actualizado con éxito.");
     }
 
-    private static void eliminarProfesor() {
-        System.out.print("Cedula del Profesor a eliminar: ");
-        String cedulaBorrar = scanner.nextLine();
-        gestor.borrar_Profesor(cedulaBorrar);
-        System.out.println("Profesor eliminado con éxito.");
-    }
+   
 }
 

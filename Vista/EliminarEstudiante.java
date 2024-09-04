@@ -1,17 +1,22 @@
 package Vista;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import dao.EstudianteDAO;
+import dao.ProfesorDAO;
+import logica.Gestor;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class EliminarEstudiante extends JFrame{
-
+	private Gestor gestor;
 	private JFrame frame;
 	private JTextField txtCedulaEliminar;
 
@@ -23,6 +28,9 @@ public class EliminarEstudiante extends JFrame{
 	 * Create the application.
 	 */
 	public EliminarEstudiante() {
+		EstudianteDAO estudianteDao = new EstudianteDAO(); 
+        ProfesorDAO profesorDao = new ProfesorDAO();
+        gestor = new Gestor(estudianteDao, profesorDao);
 		getContentPane().setLayout(null);
 		
 		JLabel lblEliminarEstudiante = new JLabel("Eliminar estudiante");
@@ -41,6 +49,11 @@ public class EliminarEstudiante extends JFrame{
 		getContentPane().add(txtCedulaEliminar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eliminarEstudiante();
+			}
+		});
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		btnEliminar.setBounds(10, 147, 162, 38);
 		getContentPane().add(btnEliminar);
@@ -67,4 +80,8 @@ public class EliminarEstudiante extends JFrame{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	private void eliminarEstudiante() {
+		gestor.borrar_Estudiante(txtCedulaEliminar.getText());
+		JOptionPane.showMessageDialog(this, "Estudiante eliminado con éxito");
+	}
 }

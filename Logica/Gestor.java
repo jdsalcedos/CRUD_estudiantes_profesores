@@ -2,18 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Logica;
+package logica;
 
-import DAO.EstudianteDAO;
-import DAO.ProfesorDAO;
-import Dto.EstudianteDto;
-import Dto.ProfesorDto;
+import dto.EstudianteDto;
+import dto.ProfesorDto;
+
 import java.util.List;
 import java.util.stream.Collectors;
+
+import dao.EstudianteDAO;
+import dao.ProfesorDAO;
 import mapper.Mapper;
-import Modelo.Estudiante;
-import Modelo.Persona;
-import Modelo.Profesor;
+import modelo.Estudiante;
+import modelo.Persona;
+import modelo.Profesor;
 
 /**
  *

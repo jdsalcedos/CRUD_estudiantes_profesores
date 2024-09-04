@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Modelo;
+package modelo;
 
 /**
  *
@@ -10,6 +10,8 @@ package Modelo;
  */
 //Estudiante hereda de la clase persona y agrega sus propios atributos
 public class Estudiante extends Persona{
+    private static final long serialVersionUID = 4166760794523280127L; // same value as when serialized
+
     private String codigoE;
     private int creditos;
     private int matricula;
@@ -23,6 +25,8 @@ public class Estudiante extends Persona{
         this.creditos = creditos;
         this.matricula = matricula;
     }
+    
+   
 //Métodos setters y getters
     public String getCodigoE() {
         return codigoE;
