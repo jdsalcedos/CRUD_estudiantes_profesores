@@ -1,0 +1,32 @@
+h1,h4 {
+    margin: 15px;
+    display: grid;
+    place-items: center;
+}
+
+html, body {
+    height: 100%;
+    margin: 15px;
+    padding: 20px;
+    background-color: #b3b3b3;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+button:hover {
+    transform: scale(1.05);  
+}
