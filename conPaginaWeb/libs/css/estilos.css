@@ -1,10 +1,11 @@
-h1,h4 {
+h1,h3,h4 {
     margin: 15px;
     display: grid;
     place-items: center;
 }
 
 html, body {
+    width: 900px;
     height: 100%;
     margin: 15px;
     padding: 20px;
@@ -16,7 +17,6 @@ html, body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    text-align: center;
 }
 
 button {
@@ -30,3 +30,22 @@ button {
 button:hover {
     transform: scale(1.05);  
 }
+
+.column {
+float: left;
+width: 50%;
+padding: 10px;
+}
+
+label {
+display: block;
+margin-bottom: 10px;
+}
+
+input[type="text"], input[type="number"] {
+width: 300px;
+padding: 15px;
+margin-bottom: 25px;
+border: 1px solid #ccc;
+}
+

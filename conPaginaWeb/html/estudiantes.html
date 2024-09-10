@@ -1,0 +1,65 @@
+<html></html>
+<head>
+<title>Estudiantes</title>
+<meta name="viewport" content="user-scalable=no, width=device,with" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../libs/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../libs/css/estilos.css"/>
+
+<script type="text/javascript" src="../libs/js/jquery.js"></script>
+<script type="text/javascript" src="../libs/js/crud.js"></script>
+<script type="text/javascript" src="../libs/js/redirect.js"></script>
+</head>
+
+<body>
+<h1>GESTION DE ESTUDIANTES</h1>
+<br>
+<div class="container">
+    <div class="row">
+        <form>
+            <fieldset>
+                <div class="column">
+                  <label>CEDULA:</label>
+                  <input type="text" name="form-control" id="cedula">
+                  <br>
+                  <label>NOMBRE:</label>
+                  <input type="text" name="form-control" id="nombre">
+                </div>
+                <div class="column">
+                  <label>CODIGO ESTUDIANTE:</label>
+                  <input type="text" name="form-control" id="codigoEstudiante">
+                  <br>
+                  <label>MATRICULA:</label>
+                  <input type="number" name="form-control" id="matricula">
+                  <br>
+                  <label>CREDITOS:</label>
+                  <input type="number" name="form-control" id="creditos">
+                </div>
+              </fieldset>
+            <button type="button" id="listar" class="btn btn-success">LISTAR</button>
+            <button type="button" id="Crear" class="btn btn-success">AÑADIR</button>
+            <button type="button" id="actualizar" class="btn btn-danger">ACTUALIZAR</button>
+            <button type="button" id="eliminar" class="btn btn-danger">ELIMINAR</button>
+        </form>
+    <hr/>
+    <h3> LISTA DE ESTUDIANTES</h3>
+    <table class="table table-borderer table-hover " id="listaEstudiantes">
+          <thead>
+            <tr>
+              <th scope="col">CEDULA</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">CODIGO DEL ESTUDIANTE</th>
+              <th scope="col">MATRICULA</th>
+              <th scope="col">CREDITOS</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpoEstudiantes">
+            
+          </tbody>
+    
+    </table>
+    </div>
+</div>
+
+</body>
+
+</html>
