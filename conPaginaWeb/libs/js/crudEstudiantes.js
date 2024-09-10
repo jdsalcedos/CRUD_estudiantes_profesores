@@ -1,56 +1,83 @@
-import { readJSONFile, writeJSONFile } from './archivo.js'; // Assuming you still want to use this for file handling
+var nuevoId;
+var db;
+var request = indexedDB.open("estudiantesDB", 1);
 
-async function readStudents() {
-  try {
-    const students = await readJSONFile('../data/archivoEstudiantes.json'); 
-    return students; // Return students directly
-  } catch (error) {
-    console.error("Error reading students:", error);
-    return []; // Return an empty array if there's an error
-  }
-}
-// Function to create a new student
-async function createStudent(data) {
-  try {
-    const students = await readStudents(); // Fetch students from the file
-    students.push(data);
-    await writeJSONFile('../data/archivoEstudiantes.json',students); // Write updated students back to the file
-    return students;
-  } catch (error) {
-    console.error("Error creating student:", error);
-    return null; // Or handle the error in a different way
-  }
+function limpiar() {
+  document.getElementById("cedula").value = "";
+  document.getElementById("nombre").value = "";
+  document.getElementById("codigoEstudiante").value = "";
+  document.getElementById("matricula").value = "";
+  document.getElementById("creditos").value = "";
 }
 
-// Function to update a student's information
-async function updateStudent(cedula, data) {
-  try {
-    const students = await readStudents(); // Fetch students from the file
-    const index = students.findIndex((student) => student.cedula === cedula);
-    if (index !== -1) {
-      students[index] = data;
-      await writeJSONFile('../data/archivoEstudiantes.json',students); // Write updated students back to the file
-      return students;
-    } else {
-      console.error("Student not found.");
-      return null; // Or handle the error in a different way
-    }
-  } catch (error) {
-    console.error("Error updating student:", error);
-    return null; // Or handle the error in a different way
-  }
-}
+$(function () {
+  var crearBD = document.querySelector("#crear_tabla");
+crearBD.addEventListener("click", function() {
+  // Creamos la base de datos IndexedDB
+  var request = indexedDB.open("estudiantesDB", 1);
 
-// Function to delete a student
-async function deleteStudent(cedula) {
-  try {
-    const students = await readStudents(); // Fetch students from the file
-    const updatedStudents = students.filter((student) => student.cedula !== cedula);
-    await writeJSONFile('../data/archivoEstudiantes.json',updatedStudents); // Write updated students back to the file
-    return updatedStudents;
-  } catch (error) {
-    console.error("Error deleting student:", error);
-    return null; // Or handle the error in a different way
+  request.onupgradeneeded = function(event) {
+    db = event.target.result;
+    var store = db.createObjectStore("estudiantes", {
+      keyPath: "cedula"
+    });
+    store.createIndex("nombre", "nombre", {
+      unique: false
+    });
+    store.createIndex("codigoEstudiante", "codigoEstudiante", {
+      unique: false
+    });
+    store.createIndex("matricula", "matricula", {
+      unique: false
+    });
+    store.createIndex("creditos", "creditos", {
+      unique: false
+    });
+  };
+
+  request.onsuccess = function(event) {
+    db = event.target.result;
+    console.log("Base de datos creada satisfactoriamente");
+  };
+
+  request.onerror = function(event) {
+    console.error("Error al crear la base de datos:", event.target.errorCode);
+  };
+});
+  $("#listar").click(function () {
+    cargarDatos();
+  });
+
+  function cargarDatos() {
+    $("#listaEstudiantes").children().remove();
+    var transaccion = db.transaction("estudiantes", "readwrite");
+    var objectStore = transaccion.objectStore("estudiantes");
+    var request = objectStore.getAll();
+    
+    request.onsuccess = function (event) {
+      var result = event.target.result;
+      
+
+      for (var i = 0; i < result.length; i++) {
+        var row = result[i];
+        var estudiante =
+          "<tr><td>" +
+          row.cedula +
+          "</td><td>" +
+          row.nombre +
+          "</td><td>" +
+          row.codigoEstudiante +
+          "</td><td>" +
+          row.matricula +
+          "</td><td>" +
+          row.creditos +
+          "</td></tr>";
+        $("#listaEstudiantes").append(estudiante);
+      }
+    };
+
+    request.onerror = function (event) {
+      alert("Error al cargar los datos: " + event.target.errorCode);
+    };
   }
-}
-// ... (Rest of your script.js code)
+});
