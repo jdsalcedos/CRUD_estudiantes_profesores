@@ -61,9 +61,8 @@ $query = mysqli_query($con, $sql);
                         <th><?= $row['codigo'] ?></th>
                         <th><?= $row['correo'] ?></th>
                         <th><?= $row['tipo'] ?></th>
-
-                        <th><a href="" class="users-table--edit">Editar</a></th>
-                        <th><a href="" class="users-table--delete">Eliminar</a></th>
+                        <th><a href="actualizar.php?id=<?= $row['id'] ?>" class="users-table--edit">Editar</a></th>
+                        <th><a href="eliminar.php?id=<?= $row['id'] ?>" class="users-table--delete">Eliminar</a></th>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
