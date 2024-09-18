@@ -20,7 +20,7 @@ fclose($data);
 $usuarios = unserialize($fileContents);
 
 // Find the index of the user to delete
-$key = array_search($id, array_column($usuarios, 'id'));
+$key = array_search($cedula, array_column($usuarios, 'cedula'));
 
 if ($key !== false) {
     $usuarios[$key]['cedula'] = $cedula;

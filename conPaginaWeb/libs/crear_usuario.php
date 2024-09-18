@@ -10,7 +10,6 @@
   $tipo = $_POST['tipo'];
 
   $new_user = [
-    'id' => $id,
     'cedula' => $cedula,
     'nombre' => $nombre,
     'codigo' => $codigo,

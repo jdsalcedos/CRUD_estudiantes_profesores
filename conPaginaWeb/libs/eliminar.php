@@ -2,7 +2,7 @@
 
 $dataFile = 'data.bin';
 
-$id=$_GET['id'];
+$cedula=$_GET['cedula'];
 // Read the data from the binary file
 $data = file_get_contents($dataFile);
 
@@ -10,11 +10,11 @@ $data = file_get_contents($dataFile);
 $usuarios = unserialize($data);
 
 // Find the index of the user to delete
-$index = array_search($id, array_column($usuarios, 'id'));
+$key = array_search($cedula, array_column($usuarios, 'cedula'));
 
 // Remove the user from the array
 if ($index !== false) {
-    unset($usuarios[$index]);
+    unset($usuarios[$key]);
 }
 
 // Serialize the data

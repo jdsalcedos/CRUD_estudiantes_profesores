@@ -13,11 +13,11 @@ fclose($file);
 $usuarios = unserialize($data);
 
 // Obtener el ID del usuario a actualizar
-$id = $_GET['id'];
+$cedula = $_GET['cedula'];
 
 // Buscar el usuario en el array de usuarios
-$usuario = array_filter($usuarios, function ($user) use ($id) {
-    return $user['id'] == $id;
+$usuario = array_filter($usuarios, function ($user) use ($cedula) {
+    return $user['cedula'] == $cedula;
 });
 
 // Obtener los datos del usuario
@@ -37,7 +37,6 @@ $usuario = reset($usuario);
     <div class="">
         <form action="editar_usuario.php" method="POST">
             <h1>Actualizar usuario</h1>
-            <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
             <input type="text" name="cedula" placeholder="Cedula" value="<?= $usuario['cedula'] ?>">
             <input type="text" name="nombre" placeholder="Nombre" value="<?= $usuario['nombre'] ?>">
             <input type="text" name="codigo" placeholder="Codigo" value="<?= $usuario['codigo'] ?>">

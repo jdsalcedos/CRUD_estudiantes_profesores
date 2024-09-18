@@ -11,7 +11,7 @@ if (file_exists('data.bin')) {
   // Check for unserialization errors
   if ($usuarios === false) {
       // Handle the unserialization error, perhaps by:
-      echo "Error: Could not deserialize data.bin";
+      echo "Registre los datos del usuario";
       // Or initialize an empty array
       $usuarios = []; 
   }
@@ -75,8 +75,8 @@ if (file_exists('data.bin')) {
                         <th><?= $usuario['codigo'] ?></th>
                         <th><?= $usuario['correo'] ?></th>
                         <th><?= $usuario['tipo'] ?></th>
-                        <th><a href="actualizar.php?id=<?= $usuario['id'] ?>" class="users-table--edit">Editar</a></th>
-                        <th><a href="eliminar.php?id=<?= $usuario['id'] ?>" class="users-table--delete">Eliminar</a></th>
+                        <th><a href="actualizar.php?cedula=<?= $usuario['cedula'] ?>" class="users-table--edit">Editar</a></th>
+                        <th><a href="eliminar.php?cedula=<?= $usuario['cedula'] ?>" class="users-table--delete">Eliminar</a></th>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
