@@ -1,10 +1,21 @@
 <?php
-include('conexion.php');
 
-$con = conexion();
+// Check if the file exists
+if (file_exists('data.bin')) {
+  // Read the file contents
+  $data = file_get_contents('data.bin');
 
-$sql = "SELECT * from usuarios";
-$query = mysqli_query($con, $sql);
+  // Unserialize the data, checking for errors
+  $usuarios = unserialize($data);
+
+  // Check for unserialization errors
+  if ($usuarios === false) {
+      // Handle the unserialization error, perhaps by:
+      echo "Error: Could not deserialize data.bin";
+      // Or initialize an empty array
+      $usuarios = []; 
+  }
+} 
 
 ?>
 
@@ -53,18 +64,21 @@ $query = mysqli_query($con, $sql);
             </thead>
 
             <tbody>
-                <?php while ($row = mysqli_fetch_array($query)): ?>
+                <?php 
+                $id = 1;
+                foreach ($usuarios as $usuario): 
+                ?>
                     <tr>
-                        <th><?= $row['id'] ?></th>
-                        <th><?= $row['cedula'] ?></th>
-                        <th><?= $row['nombre'] ?></th>
-                        <th><?= $row['codigo'] ?></th>
-                        <th><?= $row['correo'] ?></th>
-                        <th><?= $row['tipo'] ?></th>
-                        <th><a href="actualizar.php?id=<?= $row['id'] ?>" class="users-table--edit">Editar</a></th>
-                        <th><a href="eliminar.php?id=<?= $row['id'] ?>" class="users-table--delete">Eliminar</a></th>
+                        <th><?= $id++ ?></th>
+                        <th><?= $usuario['cedula'] ?></th>
+                        <th><?= $usuario['nombre'] ?></th>
+                        <th><?= $usuario['codigo'] ?></th>
+                        <th><?= $usuario['correo'] ?></th>
+                        <th><?= $usuario['tipo'] ?></th>
+                        <th><a href="actualizar.php?id=<?= $usuario['id'] ?>" class="users-table--edit">Editar</a></th>
+                        <th><a href="eliminar.php?id=<?= $usuario['id'] ?>" class="users-table--delete">Eliminar</a></th>
                     </tr>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
